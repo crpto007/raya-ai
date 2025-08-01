@@ -4,6 +4,7 @@ import openai
 import requests
 import json
 from dotenv import load_dotenv
+print("✅ App started")
 
 load_dotenv()
 
@@ -26,6 +27,9 @@ def verify():
         return challenge, 200
     else:
         return "Invalid verification token", 403
+@app.route('/')
+def health():
+    return "Running fine!", 200
 
 # ---------------------- Webhook for WhatsApp Messages ----------------------
 @app.route('/webhook', methods=['POST'])
